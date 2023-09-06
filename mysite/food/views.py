@@ -15,7 +15,13 @@ def index(request):
   return render(request,'food/index.html',context)
 
 def details(request,item_id):
-  return HttpResponse('item_id: {}'.format(item_id))
+  item = Item.objects.get(pk=item_id)
+  
+  context={
+    'item':item
+  }
+  return render(request,'food/details.html',context)
+
 
 
   
